@@ -8,7 +8,7 @@ public class KMP {
 
         for (int i = 1; i < m; i++) {
             while (j > 0 && pattern.charAt(i) != pattern.charAt(j)) {
-                j = next[j - 1];
+                j = next[j - 1];//如果字符不匹配，退回到上个相同的前一个
             }
             if (pattern.charAt(i) == pattern.charAt(j)) {
                 j++;
