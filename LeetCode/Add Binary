@@ -1,0 +1,17 @@
+import java.math.BigInteger;
+
+class Solution {
+    public String addBinary(String a, String b) {
+        BigInteger x = new BigInteger(a, 2);
+        BigInteger y = new BigInteger(b, 2);
+        
+        while (!y.equals(BigInteger.ZERO)) {
+            BigInteger answer = x.xor(y);
+            BigInteger carry = x.and(y).shiftLeft(1);
+            x = answer;//每次求和的结果除第一次外是与进位求和，将进位和结果分开计算
+            y = carry;//每次求和之后的进位
+        }
+        
+        return x.toString(2);
+    }
+}
